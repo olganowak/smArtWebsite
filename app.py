@@ -3,50 +3,44 @@ import requests
 from PIL import Image
 
 '''
-# TaxiFareModel front
+# smArt
 '''
-#image = Image.open('sunrise.jpg') -> generate random image of dataset
-st.image(image, caption='Sunrise by the mountains')
+image = Image.open('/home/quan/code/qnguyen-gh/smArt/smArt/data/Abstract_Expressionism/jimmy-ernst_oracle-1971.jpg')
+#open random image of test set
 
-st.markdown('''
-Remember that there are several ways to output content into your web page...
+st.image(image)
 
-Either as with the title by just creating a string (or an f-string). Or as with this paragraph using the `st.` functions
-''')
+user_input = st.selectbox('Select genre of the art piece',
+('Abstract Expressionism',
+ 'Action painting',
+ 'Analytical Cubism',
+ 'Art Nouveau Modern',
+ 'Baroque',
+ 'Color Field Painting',
+ 'Contemporary Realism',
+ 'Cubism',
+ 'Early Renaissance',
+ 'Expressionism',
+ 'Fauvism',
+ 'High Renaissance',
+ 'Impressionism',
+ 'Mannerism Late Renaissance',
+ 'Minimalism',
+ 'Naive Art Primitivism',
+ 'New Realism',
+ 'Northern Renaissance',
+ 'Pointillism',
+ 'Pop Art',
+ 'Post Impressionism',
+ 'Realism',
+ 'Rococo',
+ 'Romanticism',
+ 'Symbolism',
+ 'Synthetic Cubism',
+ 'Ukiyo e'))
 
-'''
-## Here we would like to add some controllers in order to ask the user to select the parameters of the ride
-
-1. Let's ask for:
-- date and time
-- pickup longitude
-- pickup latitude
-- dropoff longitude
-- dropoff latitude
-- passenger count
-'''
-
-'''
-## Once we have these, let's call our API in order to retrieve a prediction
-
-See ? No need to load a `model.joblib` file in this app, we do not even need to know anything about Data Science in order to retrieve a prediction...
-
-🤔 How could we call our API ? Off course... The `requests` package 💡
-'''
-
-url = 'https://taxifare.lewagon.ai/predict'
-
-if url == 'https://taxifare.lewagon.ai/predict':
-
-    st.markdown('Maybe you want to use your own API for the prediction, not the one provided by Le Wagon...')
-
-'''
-
-2. Let's build a dictionary containing the parameters for our API...
-
-3. Let's call our API using the `requests` package...
-
-4. Let's retrieve the prediction from the **JSON** returned by the API...
-
-## Finally, we can display the prediction to the user
-'''
+if st.button('Submit'):
+    # print is visible in the server output, not in the page
+    st.write('Ideally now the output of the model will be output')
+else:
+    st.write('C\'mon click me b***h')
