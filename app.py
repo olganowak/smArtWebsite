@@ -1,4 +1,5 @@
 import streamlit as st
+import pandas as pd
 import random
 import requests
 from PIL import Image
@@ -9,11 +10,16 @@ from PIL import Image
 
 ## Extract image and genre from test set
 
+# retrieve DataFrame
+test_set = pd.read_csv("/home/quan/code/qnguyen-gh/smArt/smArt/data/4_class_v01.csv")
+# get amount of rows and generate random index (row to get image from)
+rows=test_set.shape[0]
+index = random.randint(0,rows)
 # open and show random image of test set
-image = Image.open('/home/quan/code/qnguyen-gh/william-congdon_the-black-city-i-new-york-1949.jpg')
+image = Image.open(f'/home/quan/code/qnguyen-gh/{test_set["path"][index]}')
 st.image(image)
 # retrieve corresponding genre
-real_genre = ['some genre']
+real_genre = [test_set["genre"][index]]
 
 ## Get user input
 
@@ -34,24 +40,23 @@ genre_list = ['Abstract Expressionism',
  'Romanticism',
  'Symbolism']
 # create new list removing real_genre to avoid duplicates
-
+genre_list.remove(real_genre[0])
 # provide 4 genres to select from as user input (real genre, from test set + 3 other randomly generated genre)
 if "choices" not in st.session_state.keys():
     st.session_state["choices"] = random.sample(random.sample(genre_list,3) + real_genre,4)
-
 # get user input
 user_input = st.selectbox('Select genre of the art piece',
 (st.session_state["choices"][0],st.session_state["choices"][1],st.session_state["choices"][2],st.session_state["choices"][3]))
+
 ## Trigger model
 
-# make user commit to decision
 # Initialize state
 if "button_clicked" not in st.session_state:
     st.session_state.button_clicked = False
 def callback():
     # at this point the button was clicked
     st.session_state.button_clicked = True
-
+# make user commit to decision
 if st.button('Submit', on_click=callback) or st.session_state.button_clicked:
     columns = st.columns(2)
     # columns = st.columns(2)
@@ -60,6 +65,7 @@ if st.button('Submit', on_click=callback) or st.session_state.button_clicked:
     columns[0].write(user_input)
 
     columns[1].markdown('''## The model\'s prediction:''')
+    # PLUG API TO RUN MODEL ON THE IMAGE
     columns[1].write(real_genre[0])
     '''
     ## The real genre is...
@@ -69,9 +75,10 @@ if st.button('Submit', on_click=callback) or st.session_state.button_clicked:
         st.write(real_genre[0])
     else:
         pass
-    # get response on performance
-    # Feedback on performance, e.g. different formats if correct or incorrect')
 else:
     # message for the user if the button is not clicked
     #st.write('C\'mon click me b***h')
     pass
+
+# get response on performance
+# Feedback on performance, e.g. different formats if correct or incorrect')
