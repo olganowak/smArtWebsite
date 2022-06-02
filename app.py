@@ -10,17 +10,17 @@ from PIL import Image
 
 ## Extract image and genre from test set
 
-# retrieve DataFrame
-test_set = pd.read_csv("/home/quan/code/qnguyen-gh/smArt/smArt/data/4_class_v01.csv")
+# retrieve
+test_set = pd.read_csv("/root/code/KiKar31/smArt/smArt/data/4_class_v01.csv")
 # get amount of rows and generate random index (row to get image from)
 rows=test_set.shape[0]
-index = random.randint(0,rows)
+if "index" not in st.session_state.keys():
+    st.session_state["index"] = random.randint(0,rows)
 # open and show random image of test set
-image = Image.open(f'/home/quan/code/qnguyen-gh/{test_set["path"][index]}')
+image = Image.open(f'/root/code/KiKar31/smArt/smArt/data/wikiart/wikiart/{test_set["path"][st.session_state["index"]]}')
 st.image(image)
 # retrieve corresponding genre
-real_genre = [test_set["genre"][index]]
-
+real_genre = [test_set["genre"][st.session_state["index"]]]
 ## Get user input
 
 # full list of available genres
@@ -47,7 +47,6 @@ if "choices" not in st.session_state.keys():
 # get user input
 user_input = st.selectbox('Select genre of the art piece',
 (st.session_state["choices"][0],st.session_state["choices"][1],st.session_state["choices"][2],st.session_state["choices"][3]))
-
 ## Trigger model
 
 # Initialize state
@@ -73,6 +72,7 @@ if st.button('Submit', on_click=callback) or st.session_state.button_clicked:
     if st.button('Pressure is on, click to find out'):
         # real result gets output (retrieved from test set)
         st.write(real_genre[0])
+        st.write(test_set["path"][st.session_state["index"]])
     else:
         pass
 else:
@@ -82,3 +82,4 @@ else:
 
 # get response on performance
 # Feedback on performance, e.g. different formats if correct or incorrect')
+# add button to refresh page
