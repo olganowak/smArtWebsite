@@ -1,17 +1,19 @@
 import streamlit as st
 import pandas as pd
+import numpy as np
 import random
 import requests
 from PIL import Image
-
+#import matplotlib.pyplot as plt
 
 '''
 # smArt
 '''
 
 ## Extract image and genre from test set
-# retrieve DataFrame
+# retrieve DataFrame and npy-file (for image arrays)
 test_set = pd.read_csv("/home/quan/code/qnguyen-gh/smArt/smArt/data/4_class_v01.csv")
+test_npy=np.load("/home/quan/code/qnguyen-gh/smArt/smArt/data/4_class_v01.npy")
 # get amount of rows and generate random index (row to get image from)
 rows=test_set.shape[0]
 if "index" not in st.session_state.keys():
@@ -19,9 +21,10 @@ if "index" not in st.session_state.keys():
 # open and show random image of test set
 image = Image.open(f'/home/quan/code/qnguyen-gh/smArt/smArt/data/wikiart/{test_set["genre"][st.session_state["index"]]}/{test_set["path"][st.session_state["index"]]}')
 st.image(image)
-# retrieve corresponding genre
-real_genre = [test_set["genre"][st.session_state["index"]]]
 
+# retrieve corresponding genre and array
+real_genre = [test_set["genre"][st.session_state["index"]]]
+image_array = test_npy[st.session_state["index"]]
 ## Get user input
 # full list of available genres
 genre_list = ['Abstract Expressionism',
@@ -65,15 +68,15 @@ if st.button('Submit', on_click=callback) or st.session_state.button_clicked:
 
     columns[1].markdown('''## The model\'s prediction:''')
     # PLUG API TO RUN MODEL ON THE IMAGE
-    columns[1].write(real_genre[0])
+    url= "http://127.0.0.1:8000/predict"
 
     #params="/home/quan/code/qnguyen-gh/smArt/smArt/data/wikiart/Expressionism/Expressionism/abidin-dino_drawing-pain-1968.jpg"
-    url= f"http://127.0.0.1:8000/predict?{image}"
+
     #params= f'{test_set["genre"][st.session_state["index"]]}/{test_set["path"][st.session_state["index"]]}'
     genre, filename = test_set["path"][st.session_state["index"]].split("/")
-    # params={"genre":genre,
-    #         "filename":filename.split(".")[0]}
-    response=requests.get(url)
+    params={"genre":genre,"filename":filename}
+
+    response=requests.get(url,params=params)
     st.write(response)
     # display real genre
     '''
