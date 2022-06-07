@@ -67,15 +67,15 @@ if st.button('Submit', on_click=callback) or st.session_state.button_clicked:
     columns[0].markdown("""## Your answer:""")
     columns[0].write(user_input)
     # PLUG API TO RUN MODEL ON THE IMAGE
-        # url= "http://127.0.0.1:8000/predict"
-        # filename = test_set["filename"][st.session_state["index"]]
-        # genre = test_set["genre"][st.session_state["index"]]
-        # params={"genre":genre,"filename":filename}
-        # response=requests.get(url,params=params)
-        # prediction = response.json()
+    url= "http://127.0.0.1:8000/predict"
+    filename = test_set["filename"][st.session_state["index"]]
+    genre = test_set["genre"][st.session_state["index"]]
+    params={"genre":genre,"filename":filename}
+    response=requests.get(url,params=params)
+    prediction = response.json()
     columns[1].markdown('''## The model\'s prediction:''')
         #columns[1].write(response.json())
-    prediction = real_genre[0]
+    #prediction = real_genre[0]
     columns[1].write(prediction)
     # display real genre
     columns[0].markdown("""## The real genre is...""")
