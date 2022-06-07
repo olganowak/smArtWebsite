@@ -1,0 +1,317 @@
+make all --print-data-base --no-builtin-variables --no-builtin-rules --question
+# GNU Make 3.81
+# Copyright (C) 2006  Free Software Foundation, Inc.
+# This is free software; see the source for copying conditions.
+# There is NO warranty; not even for MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE.
+
+# This program built for i386-apple-darwin11.3.0
+
+# Make data base, printed on Mon Jun  6 17:11:39 2022
+
+# Variables
+
+# automatic
+<D = $(patsubst %/,%,$(dir $<))
+# automatic
+?F = $(notdir $?)
+# environment
+ELECTRON_NO_ATTACH_CONSOLE = 1
+# environment
+HOMEBREW_NO_ANALYTICS = 1
+# environment
+LC_CTYPE = UTF-8
+# environment
+VSCODE_LOG_NATIVE = false
+# automatic
+?D = $(patsubst %/,%,$(dir $?))
+# automatic
+@D = $(patsubst %/,%,$(dir $@))
+# automatic
+@F = $(notdir $@)
+# makefile
+CURDIR := /Users/olganowak/code/olganowak/smArtWebsite
+# makefile
+SHELL = /bin/sh
+# environment
+VSCODE_NLS_CONFIG = {"locale":"en-us","availableLanguages":{},"_languagePackSupport":true}
+# environment
+_ = /usr/bin/make
+# environment
+GOOGLE_APPLICATION_CREDENTIALS = /Users/olganowak/Documents/GoogleKey/hardy-palace-346915-fe2b4530850d.json
+# makefile (from `Makefile', line 1)
+MAKEFILE_LIST :=  Makefile
+# environment
+VSCODE_VERBOSE_LOGGING = true
+# environment
+__CFBundleIdentifier = com.microsoft.VSCode
+# environment
+VSCODE_IPC_HOOK_EXTHOST = /var/folders/d7/ns81cvcs75q1gk1wshhtnt4m0000gn/T/vscode-ipc-e47ae96e-c38f-49f1-bd85-c9bacf61fdea.sock
+# environment
+VSCODE_CWD = /Users/olganowak/code/olganowak/smArtWebsite
+# environment
+PATH = /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/bin:./bin:./node_modules/.bin:/Users/olganowak/.pyenv/plugins/pyenv-virtualenv/shims:/Users/olganowak/.rbenv/bin:/Users/olganowak/.pyenv/plugins/pyenv-virtualenv/shims:/Users/olganowak/.pyenv/shims:/Users/olganowak/.pyenv/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/sbin
+# environment
+LSCOLORS = Gxfxcxdxbxegedabagacad
+# environment
+VIRTUAL_ENV = /Users/olganowak/.pyenv/versions/3.8.13/envs/lewagon
+# environment
+LaunchInstanceID = BBE205E3-DCD1-43C2-9E06-03441CC52FE0
+# environment
+VSCODE_LOG_STACK = false
+# environment
+ELECTRON_RUN_AS_NODE = 1
+# environment
+PYENV_ROOT = /Users/olganowak/.pyenv
+# default
+.FEATURES := target-specific order-only second-expansion else-if archives jobserver check-symlink
+# environment
+SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.o99kWSAiuw/Listeners
+# automatic
+%F = $(notdir $%)
+# environment
+VSCODE_PIPE_LOGGING = true
+# environment
+PWD = /Users/olganowak/code/olganowak/smArtWebsite
+# environment
+ORIGINAL_XDG_CURRENT_DESKTOP = undefined
+# environment
+VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
+# environment
+PYENV_SHELL = zsh
+# environment
+HOME = /Users/olganowak
+# default
+MAKEFILEPATH = $(shell /usr/bin/xcode-select -print-path 2>/dev/null || echo /Developer)/Makefiles
+# environment
+VSCODE_CLI = 1
+# environment
+VSCODE_CODE_CACHE_PATH = /Users/olganowak/Library/Application Support/Code/CachedData/c3511e6c69bb39013c4a4b7b9566ec1ca73fc4d5
+# environment
+LOGNAME = olganowak
+# environment
+BUNDLER_EDITOR = code
+# environment
+APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = true
+# environment
+PYTHONBREAKPOINT = ipdb.set_trace
+# environment
+VSCODE_HANDLES_UNCAUGHT_ERRORS = true
+# automatic
+^D = $(patsubst %/,%,$(dir $^))
+# environment
+XPC_FLAGS = 0x0
+# default
+MAKE = $(MAKE_COMMAND)
+# default
+MAKECMDGOALS := all
+# environment
+SHLVL = 3
+# default
+MAKE_VERSION := 3.81
+# environment
+USER = olganowak
+# makefile
+.DEFAULT_GOAL := install_requirements
+# environment
+TERM_SESSION_ID = F2A4D9C8-7F77-41DB-B34B-304888F8C69D
+# environment
+LESS = -R
+# automatic
+%D = $(patsubst %/,%,$(dir $%))
+# default
+MAKE_COMMAND := /Library/Developer/CommandLineTools/usr/bin/make
+# environment
+TERM_PROGRAM = Apple_Terminal
+# default
+.VARIABLES := 
+# environment
+TMPDIR = /var/folders/d7/ns81cvcs75q1gk1wshhtnt4m0000gn/T/
+# automatic
+*F = $(notdir $*)
+# environment
+VSCODE_IPC_HOOK = /Users/olganowak/Library/Application Support/Code/1.67.2-main.sock
+# environment
+PYTHONPATH = /Users/olganowak/code/olganowak/data-challenges/04-Decision-Science:
+# makefile
+MAKEFLAGS = Rrqp
+# environment
+MFLAGS = -Rrqp
+# automatic
+*D = $(patsubst %/,%,$(dir $*))
+# environment
+TERM_PROGRAM_VERSION = 445
+# environment
+NVM_DIR = /Users/olganowak/.nvm
+# environment
+XPC_SERVICE_NAME = application.com.microsoft.VSCode.10490233.10490239.A7AB031D-959A-4B3F-A05B-DB676FB274DE
+# automatic
++D = $(patsubst %/,%,$(dir $+))
+# automatic
++F = $(notdir $+)
+# environment
+__CF_USER_TEXT_ENCODING = 0x1F5:0x0:0x0
+# environment
+COMMAND_MODE = unix2003
+# default
+MAKEFILES := 
+# automatic
+<F = $(notdir $<)
+# environment
+EDITOR = code
+# environment
+PAGER = less
+# environment
+LC_ALL = C
+# environment
+PYENV_VIRTUALENV_DISABLE_PROMPT = 1
+# environment
+PYENV_VIRTUAL_ENV = /Users/olganowak/.pyenv/versions/3.8.13/envs/lewagon
+# environment
+SECURITYSESSIONID = 186a4
+# automatic
+^F = $(notdir $^)
+# default
+SUFFIXES := 
+# environment
+PYENV_VIRTUALENV_INIT = 1
+# default
+.INCLUDE_DIRS = /usr/local/include
+# environment
+MAKELEVEL := 0
+# environment
+LANG = C
+# environment
+TERM = xterm-256color
+# environment
+VSCODE_PID = 23381
+# variable set hash-table stats:
+# Load=87/1024=8%, Rehash=0, Collisions=2/111=2%
+
+# Pattern-specific Variable Values
+
+# No pattern-specific variable values.
+
+# Directories
+
+# . (device 16777224, inode 12040471): 17 files, no impossibilities.
+
+# 17 files, no impossibilities in 1 directories.
+
+# Implicit Rules
+
+# No implicit rules.
+
+# Files
+
+# Not a target:
+all:
+#  Command-line target.
+#  Implicit rule search has been done.
+#  File does not exist.
+#  File has not been updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+install_requirements:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 7):
+	@pip install -r requirements.txt
+	
+
+# Not a target:
+.SUFFIXES:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+Makefile:
+#  Implicit rule search has been done.
+#  Last modified 2022-06-06 16:46:50
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+heroku_login:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 17):
+	-@heroku login
+	
+
+heroku_create_app:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 20):
+	-@heroku create ${APP_NAME}
+	
+
+deploy_heroku:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 23):
+	-@git push heroku master
+	-@heroku ps:scale web=1
+	
+
+# Not a target:
+.DEFAULT:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+clean:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 33):
+	@rm -fr */__pycache__
+	@rm -fr __init__.py
+	@rm -fr build
+	@rm -fr dist
+	@rm -fr *.dist-info
+	@rm -fr *.egg-info
+	-@rm model.joblib
+	
+
+streamlit:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 14):
+	-@streamlit run app.py
+	
+
+install:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 30):
+	@pip install . -U
+	
+
+# files hash-table stats:
+# Load=11/1024=1%, Rehash=0, Collisions=0/23=0%
+# VPATH Search Paths
+
+# No `vpath' search paths.
+
+# No general (`VPATH' variable) search path.
+
+# # of strings in strcache: 1
+# # of strcache buffers: 1
+# strcache size: total = 4096 / max = 4096 / min = 4096 / avg = 4096
+# strcache free: total = 4087 / max = 4087 / min = 4087 / avg = 4087
+
+# Finished Make data base on Mon Jun  6 17:11:39 2022
+
+ 
+make: *** No rule to make target `all'.  Stop.
+
