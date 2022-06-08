@@ -4,6 +4,7 @@ import random
 import requests
 from PIL import Image
 import time
+#import pyautogui
 import hydralit_components as hc
 from streamlit_option_menu import option_menu
 
@@ -61,12 +62,12 @@ params={"genre":genre,"filename":filename}
 #if "spinner" not in st.session_state.keys():
 #    st.session_state["spinner"] = st.spinner("Prediction is loading . . .  Please stand by, Davy is doing his thing")
 #with st.session_state["spinner"]:
-# with st.spinner("Prediction is loading . . .  Please stand by, Davy is doing his thing"):
-#     if "response" not in st.session_state.keys():
-#         st.session_state["response"] = requests.get(url,params=params)
-#response=requests.get(url,params=params)
-#prediction = st.session_state["response"].json()
-prediction=real_genre[0]
+with st.spinner("Prediction is loading . . .  Please stand by, Davy is doing his thing"):
+    if "response" not in st.session_state.keys():
+        #st.session_state["response"] = requests.get(url,params=params).json()
+        st.session_state["response"] = real_genre[0]
+prediction = st.session_state["response"]
+
     ## Trigger model
 
 # Initialize state
@@ -82,8 +83,7 @@ if st.button('Submit', on_click=callback) or st.session_state.button_clicked:
     columns[0].markdown("""## Your answer:""")
     columns[0].write(user_input)
     columns[1].markdown('## The model\'s prediction:')
-    #time.sleep(3)
-    #prediction = real_genre[0]
+    time.sleep(3)
     columns[1].write(prediction)
     st.text("")
     # display real genre
@@ -97,9 +97,9 @@ if st.button('Submit', on_click=callback) or st.session_state.button_clicked:
             st.success("Y'all good")
         elif user_input == real_genre[0] and prediction != real_genre[0]:
             st.balloons()
-            st.success("WOOOOOHOOOOOOO! Splendid!")
+            st.success("Congrats, you beat the model!")
         elif user_input != real_genre[0] and prediction == real_genre[0]:
-            st.error("shit you suck")
+            st.error("Doomsday is coming...")
         else:
             st.error("Damn y'all both suck!")
         st.text("")
