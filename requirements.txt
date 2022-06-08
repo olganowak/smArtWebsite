@@ -3,6 +3,4 @@ streamlit_option_menu
 hydralit_components
 streamlit
 pandas
-random
 requests
-time
