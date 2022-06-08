@@ -7,7 +7,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 
 # This program built for i386-apple-darwin11.3.0
 
-# Make data base, printed on Mon Jun  6 17:11:39 2022
+# Make data base, printed on Wed Jun  8 11:33:41 2022
 
 # Variables
 
@@ -46,7 +46,7 @@ VSCODE_VERBOSE_LOGGING = true
 # environment
 __CFBundleIdentifier = com.microsoft.VSCode
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /var/folders/d7/ns81cvcs75q1gk1wshhtnt4m0000gn/T/vscode-ipc-e47ae96e-c38f-49f1-bd85-c9bacf61fdea.sock
+VSCODE_IPC_HOOK_EXTHOST = /var/folders/d7/ns81cvcs75q1gk1wshhtnt4m0000gn/T/vscode-ipc-c8a55414-7a0e-4d55-af33-b1a731625466.sock
 # environment
 VSCODE_CWD = /Users/olganowak/code/olganowak/smArtWebsite
 # environment
@@ -56,7 +56,7 @@ LSCOLORS = Gxfxcxdxbxegedabagacad
 # environment
 VIRTUAL_ENV = /Users/olganowak/.pyenv/versions/3.8.13/envs/lewagon
 # environment
-LaunchInstanceID = BBE205E3-DCD1-43C2-9E06-03441CC52FE0
+LaunchInstanceID = 2F7B10FB-4374-44F0-BACE-9208334C38D9
 # environment
 VSCODE_LOG_STACK = false
 # environment
@@ -66,7 +66,7 @@ PYENV_ROOT = /Users/olganowak/.pyenv
 # default
 .FEATURES := target-specific order-only second-expansion else-if archives jobserver check-symlink
 # environment
-SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.o99kWSAiuw/Listeners
+SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.672NDGb3LT/Listeners
 # automatic
 %F = $(notdir $%)
 # environment
@@ -114,7 +114,7 @@ USER = olganowak
 # makefile
 .DEFAULT_GOAL := install_requirements
 # environment
-TERM_SESSION_ID = F2A4D9C8-7F77-41DB-B34B-304888F8C69D
+TERM_SESSION_ID = B26F8C19-861E-4DA7-99A4-219A9A07EBBF
 # environment
 LESS = -R
 # automatic
@@ -132,7 +132,7 @@ TMPDIR = /var/folders/d7/ns81cvcs75q1gk1wshhtnt4m0000gn/T/
 # environment
 VSCODE_IPC_HOOK = /Users/olganowak/Library/Application Support/Code/1.67.2-main.sock
 # environment
-PYTHONPATH = /Users/olganowak/code/olganowak/data-challenges/04-Decision-Science:
+PYTHONPATH = /Users/code/olganowak/smArt/smArt
 # makefile
 MAKEFLAGS = Rrqp
 # environment
@@ -144,7 +144,7 @@ TERM_PROGRAM_VERSION = 445
 # environment
 NVM_DIR = /Users/olganowak/.nvm
 # environment
-XPC_SERVICE_NAME = application.com.microsoft.VSCode.10490233.10490239.A7AB031D-959A-4B3F-A05B-DB676FB274DE
+XPC_SERVICE_NAME = application.com.microsoft.VSCode.10490233.10490239.9D041AE9-2534-4CF8-8AE2-A02C8A3F0459
 # automatic
 +D = $(patsubst %/,%,$(dir $+))
 # automatic
@@ -184,7 +184,7 @@ LANG = C
 # environment
 TERM = xterm-256color
 # environment
-VSCODE_PID = 23381
+VSCODE_PID = 395
 # variable set hash-table stats:
 # Load=87/1024=8%, Rehash=0, Collisions=2/111=2%
 
@@ -194,7 +194,7 @@ VSCODE_PID = 23381
 
 # Directories
 
-# . (device 16777224, inode 12040471): 17 files, no impossibilities.
+# . (device 16777223, inode 12040471): 17 files, no impossibilities.
 
 # 17 files, no impossibilities in 1 directories.
 
@@ -230,7 +230,7 @@ install_requirements:
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-06 16:46:50
+#  Last modified 2022-06-06 17:22:46
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -310,7 +310,7 @@ install:
 # strcache size: total = 4096 / max = 4096 / min = 4096 / avg = 4096
 # strcache free: total = 4087 / max = 4087 / min = 4087 / avg = 4087
 
-# Finished Make data base on Mon Jun  6 17:11:39 2022
+# Finished Make data base on Wed Jun  8 11:33:41 2022
 
  
 make: *** No rule to make target `all'.  Stop.
