@@ -3,30 +3,30 @@ import pandas as pd
 import random
 import requests
 from PIL import Image
+import time
+import hydralit_components as hc
+from streamlit_option_menu import option_menu
 
 st.markdown("<h1 style='text-align: center;'>smArt</h1>", unsafe_allow_html=True)
 
     ## Extract image and genre from test set
+
 # retrieve DataFrame and npy-file (for image arrays)
-#test_set = pd.read_csv("/Users/olganowak/code/olganowak/smArt/raw_data/drive-download-20220606T150142Z-001/4_class_v01.csv")
-#test_npy=np.load("/Users/olganowak/code/olganowak/smArt/raw_data/drive-download-20220606T150142Z-001/4_class_v01.npy")
 test_set = pd.read_csv("https://storage.googleapis.com/artdataset/sample_dataframe.csv")
-#test_npy=np.load("/home/quan/code/qnguyen-gh/smArt/smArt/data/4_class_v01.npy")
 # get amount of rows and generate random index (row to get image from)
 rows=test_set.shape[0]
 if "index" not in st.session_state.keys():
     st.session_state["index"] = random.randint(0,rows)
 # open and show random image of test set
-#image = Image.open(f'/Users/olganowak/code/olganowak/smArt/raw_data/wikiart/{test_set["path"][st.session_state["index"]]}')
 im_url=test_set["url"][st.session_state["index"]]
 image = Image.open(requests.get(im_url, stream=True).raw)
-#image = Image.open(f'/home/quan/code/qnguyen-gh/smArt/smArt/data/wikiart/{test_set["genre"][st.session_state["index"]]}/{test_set["path"][st.session_state["index"]]}')
-st.image(image)
+columns = st.columns([1,3,1])
+columns[1].image(image)
 # retrieve corresponding genre and array
 real_genre = [test_set["genre"][st.session_state["index"]].replace("_"," ")]
-#image_array = test_npy[st.session_state["index"]]
 
     ## Get user input
+
 # full list of available genres
 genre_list = ['Abstract Expressionism',
  'Art Nouveau Modern',
@@ -53,6 +53,7 @@ user_input = st.selectbox('Which genre is it?',
 (st.session_state["choices"][0],st.session_state["choices"][1],st.session_state["choices"][2],st.session_state["choices"][3]))
 
     ## Trigger model
+
 # Initialize state
 if "button_clicked" not in st.session_state:
     st.session_state.button_clicked = False
@@ -61,25 +62,27 @@ def callback():
     st.session_state.button_clicked = True
 # make user commit to decision
 if st.button('Submit', on_click=callback) or st.session_state.button_clicked:
-    columns = st.columns(2)
-    # columns = st.columns(2)
+    columns = st.columns([2,3])
     # shove image into pipeline (gets reshaped and put through model) and predict genre
     columns[0].markdown("""## Your answer:""")
     columns[0].write(user_input)
-    # PLUG API TO RUN MODEL ON THE IMAGE
-    url= "http://127.0.0.1:8000/predict"
-    filename = test_set["filename"][st.session_state["index"]]
-    genre = test_set["genre"][st.session_state["index"]]
-    params={"genre":genre,"filename":filename}
-    response=requests.get(url,params=params)
-    prediction = response.json()
-    columns[1].markdown('''## The model\'s prediction:''')
-        #columns[1].write(response.json())
-    #prediction = real_genre[0]
-    columns[1].write(prediction)
-    # display real genre
-    columns[0].markdown("""## The real genre is...""")
+    columns[1].markdown('## The model\'s prediction:')
+    with st.spinner("Prediction is loading . . .  Please stand by, Davy is doing his thing"):
+        # PLUG API TO RUN MODEL ON THE IMAGE
+        # url= "http://127.0.0.1:8000/predict"
+        # # get params
+        # filename = test_set["filename"][st.session_state["index"]]
+        # genre = test_set["genre"][st.session_state["index"]]
+        # params={"genre":genre,"filename":filename}
+        # response=requests.get(url,params=params)
+        # prediction = response.json()
+        time.sleep(10)
+        prediction = real_genre[0]
+        columns[1].write(prediction)
 
+    # display real genre
+    columns = st.columns(2)
+    columns[0].markdown("""## The real genre is...""")
     if st.button('Pressure is on, click to find out'):
         # real result gets output (retrieved from test set)
         columns[1].markdown(f"## _{real_genre[0]}_")
@@ -113,5 +116,14 @@ else:
 # Feedback on performance, e.g. different formats if correct or incorrect')
 
 # dump:
+#test_set = pd.read_csv("/Users/olganowak/code/olganowak/smArt/raw_data/drive-download-20220606T150142Z-001/4_class_v01.csv")
+#test_npy=np.load("/Users/olganowak/code/olganowak/smArt/raw_data/drive-download-20220606T150142Z-001/4_class_v01.npy")
+#test_npy=np.load("/home/quan/code/qnguyen-gh/smArt/smArt/data/4_class_v01.npy")
+
+#image = Image.open(f'/Users/olganowak/code/olganowak/smArt/raw_data/wikiart/{test_set["path"][st.session_state["index"]]}')
+#image = Image.open(f'/home/quan/code/qnguyen-gh/smArt/smArt/data/wikiart/{test_set["genre"][st.session_state["index"]]}/{test_set["path"][st.session_state["index"]]}')
+
+#image_array = test_npy[st.session_state["index"]]
+
 #params="/home/quan/code/qnguyen-gh/smArt/smArt/data/wikiart/Expressionism/Expressionism/abidin-dino_drawing-pain-1968.jpg"
 #params= f'{test_set["genre"][st.session_state["index"]]}/{test_set["path"][st.session_state["index"]]}'
