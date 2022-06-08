@@ -22,7 +22,7 @@ im_url=test_set["url"][st.session_state["index"]]
 image = Image.open(requests.get(im_url, stream=True).raw)
 columns = st.columns([1,3,1])
 columns[1].image(image)
-# retrieve corresponding genre and array
+# retrieve corresponding genre
 real_genre = [test_set["genre"][st.session_state["index"]].replace("_"," ")]
 
     ## Get user input
@@ -51,7 +51,22 @@ if "choices" not in st.session_state.keys():
 # get user input
 user_input = st.selectbox('Which genre is it?',
 (st.session_state["choices"][0],st.session_state["choices"][1],st.session_state["choices"][2],st.session_state["choices"][3]))
-
+# PLUG API TO RUN MODEL ON THE IMAGE
+# shove image into pipeline (gets reshaped and put through model) and predict genre
+url= "http://127.0.0.1:8000/predict"
+# get params
+filename = test_set["filename"][st.session_state["index"]]
+genre = test_set["genre"][st.session_state["index"]]
+params={"genre":genre,"filename":filename}
+#if "spinner" not in st.session_state.keys():
+#    st.session_state["spinner"] = st.spinner("Prediction is loading . . .  Please stand by, Davy is doing his thing")
+#with st.session_state["spinner"]:
+# with st.spinner("Prediction is loading . . .  Please stand by, Davy is doing his thing"):
+#     if "response" not in st.session_state.keys():
+#         st.session_state["response"] = requests.get(url,params=params)
+#response=requests.get(url,params=params)
+#prediction = st.session_state["response"].json()
+prediction=real_genre[0]
     ## Trigger model
 
 # Initialize state
@@ -63,23 +78,14 @@ def callback():
 # make user commit to decision
 if st.button('Submit', on_click=callback) or st.session_state.button_clicked:
     columns = st.columns([2,3])
-    # shove image into pipeline (gets reshaped and put through model) and predict genre
+    # display answer and model prediction
     columns[0].markdown("""## Your answer:""")
     columns[0].write(user_input)
     columns[1].markdown('## The model\'s prediction:')
-    with st.spinner("Prediction is loading . . .  Please stand by, Davy is doing his thing"):
-        # PLUG API TO RUN MODEL ON THE IMAGE
-        url= "http://127.0.0.1:8000/predict"
-        # get params
-        filename = test_set["filename"][st.session_state["index"]]
-        genre = test_set["genre"][st.session_state["index"]]
-        params={"genre":genre,"filename":filename}
-        response=requests.get(url,params=params)
-        prediction = response.json()
-        # time.sleep(10)
-        # prediction = real_genre[0]
-        columns[1].write(prediction)
-
+    #time.sleep(3)
+    #prediction = real_genre[0]
+    columns[1].write(prediction)
+    st.text("")
     # display real genre
     columns = st.columns(2)
     columns[0].markdown("""## The real genre is...""")
@@ -127,3 +133,8 @@ else:
 
 #params="/home/quan/code/qnguyen-gh/smArt/smArt/data/wikiart/Expressionism/Expressionism/abidin-dino_drawing-pain-1968.jpg"
 #params= f'{test_set["genre"][st.session_state["index"]]}/{test_set["path"][st.session_state["index"]]}'
+
+# if "spinner" not in st.session_state.keys():
+#         st.session_state["spinner"] = st.spinner("Prediction is loading . . .  Please stand by, Davy is doing his thing")
+#     with st.session_state["spinner"]:
+#         with st.session_state["spinner"]:
