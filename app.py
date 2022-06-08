@@ -69,15 +69,15 @@ if st.button('Submit', on_click=callback) or st.session_state.button_clicked:
     columns[1].markdown('## The model\'s prediction:')
     with st.spinner("Prediction is loading . . .  Please stand by, Davy is doing his thing"):
         # PLUG API TO RUN MODEL ON THE IMAGE
-        # url= "http://127.0.0.1:8000/predict"
-        # # get params
-        # filename = test_set["filename"][st.session_state["index"]]
-        # genre = test_set["genre"][st.session_state["index"]]
-        # params={"genre":genre,"filename":filename}
-        # response=requests.get(url,params=params)
-        # prediction = response.json()
-        time.sleep(10)
-        prediction = real_genre[0]
+        url= "http://127.0.0.1:8000/predict"
+        # get params
+        filename = test_set["filename"][st.session_state["index"]]
+        genre = test_set["genre"][st.session_state["index"]]
+        params={"genre":genre,"filename":filename}
+        response=requests.get(url,params=params)
+        prediction = response.json()
+        # time.sleep(10)
+        # prediction = real_genre[0]
         columns[1].write(prediction)
 
     # display real genre
