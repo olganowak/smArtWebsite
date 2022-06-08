@@ -4,6 +4,8 @@ import random
 import requests
 from PIL import Image
 import time
+import hydralit_components as hc
+from streamlit_option_menu import option_menu
 
 st.markdown("<h1 style='text-align: center;'>smArt</h1>", unsafe_allow_html=True)
 
