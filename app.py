@@ -8,8 +8,8 @@ import time
 import hydralit_components as hc
 from streamlit_option_menu import option_menu
 
-st.markdown("<h1 style='text-align: center;'>smArt</h1>", unsafe_allow_html=True)
-
+st.markdown("<h1 style='text-align: center;'>F A P ©</h1>", unsafe_allow_html=True)
+st.markdown("<h6 style='text-align: center;'>Test your knowledge against a machine</h6>", unsafe_allow_html=True)
     ## Extract image and genre from test set
 
 # retrieve DataFrame
