@@ -22,7 +22,7 @@ if "index" not in st.session_state.keys():
 # open and show random image of test set
 im_url=test_set["url"][st.session_state["index"]]
 image = Image.open(requests.get(im_url, stream=True).raw)
-columns = st.columns([1,3,1])
+columns = st.columns([1,4,1])
 columns[1].image(image)
 # retrieve corresponding genre
 real_genre = [test_set["genre"][st.session_state["index"]].replace("_"," ")]
@@ -111,13 +111,10 @@ if st.button('Submit', on_click=callback) or st.session_state.button_clicked:
             st.error("Damn y'all both suck!")
         st.text("")
         # display title and artist of art piece
-        columns = st.columns([1,2])
-        columns[0].write("Title:")
         title = test_set["title"][st.session_state["index"]]
-        columns[1].text(title)
-        columns[0].write("Artist:")
+        st.markdown(f"Title: *{title}*")
         artist = test_set["artist"][st.session_state["index"]]
-        columns[1].text(artist)
+        st.markdown(f"Artist: *{artist}*")
     else:
         pass
 else:
