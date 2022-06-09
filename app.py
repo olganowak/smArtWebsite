@@ -4,6 +4,7 @@ import random
 import requests
 from PIL import Image
 import time
+#import pyautogui
 import hydralit_components as hc
 from streamlit_option_menu import option_menu
 
@@ -11,8 +12,9 @@ st.markdown("<h1 style='text-align: center;'>smArt</h1>", unsafe_allow_html=True
 
     ## Extract image and genre from test set
 
-# retrieve DataFrame and npy-file (for image arrays)
-test_set = pd.read_csv("https://storage.googleapis.com/artdataset/sample_dataframe.csv")
+# retrieve DataFrame
+#test_set = pd.read_csv("https://storage.googleapis.com/artdataset/sample_dataframe.csv")
+test_set = pd.read_csv("https://storage.googleapis.com/artdataset/predictions_dataframe.csv")
 # get amount of rows and generate random index (row to get image from)
 rows=test_set.shape[0]
 if "index" not in st.session_state.keys():
@@ -51,22 +53,22 @@ if "choices" not in st.session_state.keys():
 # get user input
 user_input = st.selectbox('Which genre is it?',
 (st.session_state["choices"][0],st.session_state["choices"][1],st.session_state["choices"][2],st.session_state["choices"][3]))
-# PLUG API TO RUN MODEL ON THE IMAGE
-# shove image into pipeline (gets reshaped and put through model) and predict genre
-url= "http://127.0.0.1:8000/predict"
-# get params
-filename = test_set["filename"][st.session_state["index"]]
-genre = test_set["genre"][st.session_state["index"]]
-params={"genre":genre,"filename":filename}
-#if "spinner" not in st.session_state.keys():
-#    st.session_state["spinner"] = st.spinner("Prediction is loading . . .  Please stand by, Davy is doing his thing")
-#with st.session_state["spinner"]:
+
+# # PLUG API TO RUN MODEL ON THE IMAGE
+# # shove image into pipeline (gets reshaped and put through model) and predict genre
+# url= "http://127.0.0.1:8000/predict"
+# # get params
+# filename = test_set["filename"][st.session_state["index"]]
+# genre = test_set["genre"][st.session_state["index"]]
+# params={"genre":genre,"filename":filename}
+# #if "spinner" not in st.session_state.keys():
+# #    st.session_state["spinner"] = st.spinner("Prediction is loading . . .  Please stand by, Davy is doing his thing")
+# #with st.session_state["spinner"]:
 # with st.spinner("Prediction is loading . . .  Please stand by, Davy is doing his thing"):
 #     if "response" not in st.session_state.keys():
-#         st.session_state["response"] = requests.get(url,params=params)
-#response=requests.get(url,params=params)
-#prediction = st.session_state["response"].json()
-prediction=real_genre[0]
+#         st.session_state["response"] = requests.get(url,params=params).json()
+# prediction = st.session_state["response"]
+
     ## Trigger model
 
 # Initialize state
@@ -82,8 +84,13 @@ if st.button('Submit', on_click=callback) or st.session_state.button_clicked:
     columns[0].markdown("""## Your answer:""")
     columns[0].write(user_input)
     columns[1].markdown('## The model\'s prediction:')
-    #time.sleep(3)
-    #prediction = real_genre[0]
+    # get prediction
+    prediction = test_set["predictions"][st.session_state["index"]]
+    if "spinner" not in st.session_state.keys():
+        st.session_state["spinner"] = st.spinner("Prediction is loading . . .  Please stand by, Davy is doing his thing")
+        with st.session_state["spinner"]:
+            if "timer" not in st.session_state.keys():
+                st.session_state["timer"] = time.sleep(3)
     columns[1].write(prediction)
     st.text("")
     # display real genre
@@ -97,9 +104,9 @@ if st.button('Submit', on_click=callback) or st.session_state.button_clicked:
             st.success("Y'all good")
         elif user_input == real_genre[0] and prediction != real_genre[0]:
             st.balloons()
-            st.success("WOOOOOHOOOOOOO! Splendid!")
+            st.success("Congrats, you beat the model!")
         elif user_input != real_genre[0] and prediction == real_genre[0]:
-            st.error("shit you suck")
+            st.error("Machine beat you. Doomsday is coming...")
         else:
             st.error("Damn y'all both suck!")
         st.text("")
@@ -114,12 +121,8 @@ if st.button('Submit', on_click=callback) or st.session_state.button_clicked:
     else:
         pass
 else:
-    # message for the user if the button is not clicked
-    #st.write('C\'mon click me b***h')
     pass
 
-# get response on performance
-# Feedback on performance, e.g. different formats if correct or incorrect')
 
 # dump:
 #test_set = pd.read_csv("/Users/olganowak/code/olganowak/smArt/raw_data/drive-download-20220606T150142Z-001/4_class_v01.csv")
