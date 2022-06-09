@@ -24,7 +24,7 @@ if "index" not in st.session_state.keys():
 # open and show random image of test set
 im_url=test_set["url"][st.session_state["index"]]
 image = Image.open(requests.get(im_url, stream=True).raw)
-columns = st.columns([1,4,1])
+columns = st.columns([1,3,1])
 columns[1].image(image)
 # retrieve corresponding genre
 real_genre = [test_set["genre"][st.session_state["index"]].replace("_"," ")]
