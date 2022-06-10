@@ -120,22 +120,3 @@ if st.button('Submit', on_click=callback) or st.session_state.button_clicked:
         pass
 else:
     pass
-
-
-# dump:
-#test_set = pd.read_csv("/Users/olganowak/code/olganowak/smArt/raw_data/drive-download-20220606T150142Z-001/4_class_v01.csv")
-#test_npy=np.load("/Users/olganowak/code/olganowak/smArt/raw_data/drive-download-20220606T150142Z-001/4_class_v01.npy")
-#test_npy=np.load("/home/quan/code/qnguyen-gh/smArt/smArt/data/4_class_v01.npy")
-
-#image = Image.open(f'/Users/olganowak/code/olganowak/smArt/raw_data/wikiart/{test_set["path"][st.session_state["index"]]}')
-#image = Image.open(f'/home/quan/code/qnguyen-gh/smArt/smArt/data/wikiart/{test_set["genre"][st.session_state["index"]]}/{test_set["path"][st.session_state["index"]]}')
-
-#image_array = test_npy[st.session_state["index"]]
-
-#params="/home/quan/code/qnguyen-gh/smArt/smArt/data/wikiart/Expressionism/Expressionism/abidin-dino_drawing-pain-1968.jpg"
-#params= f'{test_set["genre"][st.session_state["index"]]}/{test_set["path"][st.session_state["index"]]}'
-
-# if "spinner" not in st.session_state.keys():
-#         st.session_state["spinner"] = st.spinner("Prediction is loading . . .  Please stand by, Davy is doing his thing")
-#     with st.session_state["spinner"]:
-#         with st.session_state["spinner"]:
