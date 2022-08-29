@@ -8,7 +8,10 @@ import time
 import hydralit_components as hc
 from streamlit_option_menu import option_menu
 
-st.markdown("<h1 style='text-align: center;'>smArt</h1>", unsafe_allow_html=True)
+st.markdown("<h1 style='text-align: center;'>F A P ©</h1>", unsafe_allow_html=True)
+st.markdown("<h5 style='text-align: center;'>Fine Art Painting Classification</h5>", unsafe_allow_html=True)
+st.text("")
+st.caption("<h6 style='text-align: center;'>Test your knowledge against a machine</h6>", unsafe_allow_html=True)
 
     ## Extract image and genre from test set
 
@@ -87,10 +90,10 @@ if st.button('Submit', on_click=callback) or st.session_state.button_clicked:
     # get prediction
     prediction = test_set["predictions"][st.session_state["index"]]
     if "spinner" not in st.session_state.keys():
-        st.session_state["spinner"] = st.spinner("Prediction is loading . . .  Please stand by, Davy is doing his thing")
+        st.session_state["spinner"] = st.spinner("Davy making a prediction, please stand by. . .")
         with st.session_state["spinner"]:
             if "timer" not in st.session_state.keys():
-                st.session_state["timer"] = time.sleep(3)
+                st.session_state["timer"] = time.sleep(4)
     columns[1].write(prediction)
     st.text("")
     # display real genre
@@ -100,44 +103,23 @@ if st.button('Submit', on_click=callback) or st.session_state.button_clicked:
         # real result gets output (retrieved from test set)
         columns[1].markdown(f"## _{real_genre[0]}_")
         if user_input == prediction and prediction == real_genre[0]:
-            st.balloons()
-            st.success("Y'all good")
+            st.success("Y'all both good")
         elif user_input == real_genre[0] and prediction != real_genre[0]:
             st.balloons()
             st.success("Congrats, you beat the model!")
         elif user_input != real_genre[0] and prediction == real_genre[0]:
-            st.error("Machine beat you. Doomsday is coming...")
+            st.error("The machine beat you. Doomsday is coming...")
         else:
             st.error("Damn y'all both suck!")
         st.text("")
         # display title and artist of art piece
-        columns = st.columns([1,2])
-        columns[0].write("Title:")
         title = test_set["title"][st.session_state["index"]]
-        columns[1].text(title)
-        columns[0].write("Artist:")
+        st.markdown(f"Title: *{title}*")
         artist = test_set["artist"][st.session_state["index"]]
-        columns[1].text(artist)
+        st.markdown(f"Artist: *{artist}*")
+        st.text("")
+        st.caption("<h6 style='text-align: center;'>Reload the page to try again!</h6>", unsafe_allow_html=True)
     else:
         pass
 else:
     pass
-
-
-# dump:
-#test_set = pd.read_csv("/Users/olganowak/code/olganowak/smArt/raw_data/drive-download-20220606T150142Z-001/4_class_v01.csv")
-#test_npy=np.load("/Users/olganowak/code/olganowak/smArt/raw_data/drive-download-20220606T150142Z-001/4_class_v01.npy")
-#test_npy=np.load("/home/quan/code/qnguyen-gh/smArt/smArt/data/4_class_v01.npy")
-
-#image = Image.open(f'/Users/olganowak/code/olganowak/smArt/raw_data/wikiart/{test_set["path"][st.session_state["index"]]}')
-#image = Image.open(f'/home/quan/code/qnguyen-gh/smArt/smArt/data/wikiart/{test_set["genre"][st.session_state["index"]]}/{test_set["path"][st.session_state["index"]]}')
-
-#image_array = test_npy[st.session_state["index"]]
-
-#params="/home/quan/code/qnguyen-gh/smArt/smArt/data/wikiart/Expressionism/Expressionism/abidin-dino_drawing-pain-1968.jpg"
-#params= f'{test_set["genre"][st.session_state["index"]]}/{test_set["path"][st.session_state["index"]]}'
-
-# if "spinner" not in st.session_state.keys():
-#         st.session_state["spinner"] = st.spinner("Prediction is loading . . .  Please stand by, Davy is doing his thing")
-#     with st.session_state["spinner"]:
-#         with st.session_state["spinner"]:
