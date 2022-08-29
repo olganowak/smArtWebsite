@@ -12,6 +12,7 @@ st.markdown("<h1 style='text-align: center;'>F A P ©</h1>", unsafe_allow_html=T
 st.markdown("<h5 style='text-align: center;'>Fine Art Painting Classification</h5>", unsafe_allow_html=True)
 st.text("")
 st.caption("<h6 style='text-align: center;'>Test your knowledge against a machine</h6>", unsafe_allow_html=True)
+
     ## Extract image and genre from test set
 
 # retrieve DataFrame
@@ -116,6 +117,8 @@ if st.button('Submit', on_click=callback) or st.session_state.button_clicked:
         st.markdown(f"Title: *{title}*")
         artist = test_set["artist"][st.session_state["index"]]
         st.markdown(f"Artist: *{artist}*")
+        st.text("")
+        st.caption("<h6 style='text-align: center;'>Reload the page to try again!</h6>", unsafe_allow_html=True)
     else:
         pass
 else:
